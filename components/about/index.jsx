@@ -3,7 +3,7 @@ import React from "react";
 const About = () => {
   return (
     <section
-      className="w-full h-auto min-h-[800px] font-['Poppins'] px-4 flex items-center justify-center flex-col gap-6 py-10 relative bg-[#121212] rounded-[3rem]"
+      className="w-full h-auto min-h-[800px] font-['Poppins'] px-4 flex items-center justify-center flex-col gap-6 py-10 relative bg-[#121212] rounded-[1.5rem]"
       id="about"
     >
       <h2 className="text-[#f4f4f4] text-[2.5rem] sm:text-[3.5rem] mb-6 text-center">
