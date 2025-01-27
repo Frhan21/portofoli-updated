@@ -18,13 +18,6 @@ export const Project = () => {
 
   const displayedProjects = projects.slice(0, 3)
 
-  if(!project) {
-    return <div>Loading...</div>
-  }
-
-  if(projects.length === 0 ) {
-    return <div>No project found</div>
-  }
   return (
     <section
       className="w-full min-h-[125vh] bg-[#ffffff] font-['Poppins'] p-4 flex flex-col items-center gap-6 "
