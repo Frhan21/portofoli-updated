@@ -45,7 +45,7 @@ const Page = () => {
   return (
     <div className="flex h-screen">
       <SideBar />
-      <main className="flex-grow p-6 bg-gray-100 overflow-auto">
+      <main className="flex-grow p-6 bg-gray-100 overflow-auto w-full">
         <h1 className="text-2xl font-bold mb-6">Welcome to Dashboard</h1>
         <Link
           href="/dashboard/create"
@@ -61,6 +61,7 @@ const Page = () => {
               <th className="p-4 text-left">Project Tech Stack</th>
               <th className="p-4 text-left">Project Image URL</th>
               <th className="p-4 text-left">Project Link URL</th>
+              <th className="p-4 text-left">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -80,7 +81,9 @@ const Page = () => {
                     ))}
                   </ul>
                 </td>
-                <td className="p-4 w-1/2">{project.imageUrl}</td>
+                <td className="p-4 w-fit">
+                      <Link href={project.imageUrl}>{project.title}</Link>
+                </td>
                 <td className="p-4 flex flex-wrap gap-4 items-center justify-start">
                   <Link
                     href="#"
@@ -94,6 +97,10 @@ const Page = () => {
                   >
                     <FontAwesomeIcon icon={faEye} /> Demo Link
                   </Link>
+                </td>
+                <td>
+                  <button className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">Edit</button>
+                  <button>Delete</button>
                 </td>
               </tr>
             ))}
