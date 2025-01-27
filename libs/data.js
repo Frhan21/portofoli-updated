@@ -18,8 +18,6 @@ export const getData = async () => {
       ...project,
       tech: cleanTechArray(project.tech), // Bersihkan data `tech`
     }));
-
-    console.log(parsedData);
     return parsedData;
   } catch (error) {
     console.error("Error fetching projects:", error);

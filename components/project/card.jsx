@@ -1,45 +1,63 @@
-"use client"
+"use client";
 
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faEye } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const { default: Image } = require("next/image");
 
-const Card = () => {
+export const Card = ({ project }) => {
   return (
-    <>
-      {/* Card 1 */}
-      <div className="h-[500px] p-6 transition-all transform bg-white rounded-lg shadow-xl hover:scale-105 hover:shadow-2xl my-10">
-        <div className="relative h-48 overflow-hidden rounded-lg">
-          <Image
-            src=""
-            alt="Project 1"
-            className="object-cover w-full h-full"
-          />
-        </div>
-        <h3 className="mt-4 mb-2 text-2xl font-bold">Title 1</h3>
-        <p className="w-auto px-2 py-1 mb-4 text-center text-gray-500 border-2 border-gray-500 rounded-full bg-[#f4f4f4f4] text-sm">
-          Project Description
-        </p>
-        <div className="flex items-center justify-start gap-2">
-            <a
-              href="#"
-              className="bg-[#0a0a0a] cursor-pointer text-white px-4 py-2 rounded-lg hover:bg-[#333333] transition-colors"
-            >
-              <FontAwesomeIcon icon={faGithub} /> GitHub
-            </a>
-            {/* Demo Button */}
-            <a
-              href="#"
-              className="bg-[#ff8132] cursor-pointer border-2 border-[#ff8132] text-white px-4 py-2 rounded-lg hover:bg-[#fffff] transition-colors"
-            >
-              <FontAwesomeIcon icon={faEye} /> View
-            </a>
-        </div>
+    <div className="max-w-md w-full p-6 transition-transform transform bg-white rounded-2xl shadow-lg hover:scale-105 hover:shadow-2xl">
+      {/* Project Image */}
+      <div className="relative h-48 overflow-hidden rounded-xl">
+        <Image
+          src={project.imageUrl}
+          alt={project.title}
+          className="object-cover w-full h-full"
+          width={400}
+          height={400}
+        />
       </div>
-    </>
+
+      {/* Project Title */}
+      <h3 className="mt-4 mb-2 text-2xl font-bold text-gray-800">
+        {project.title}
+      </h3>
+
+      {/* Tech Stack */}
+      <div className="flex flex-wrap gap-2 mb-4">
+        {project.tech.map((tech, index) => (
+          <span
+            key={index}
+            className="px-3 py-1 text-sm font-medium text-white bg-gray-800 rounded-full"
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
+
+      {/* Buttons */}
+      <div className="flex items-center gap-4">
+        {/* GitHub Button */}
+        <a
+          href={project.githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-4 py-2 text-white transition-colors bg-gray-800 rounded-lg hover:bg-gray-600"
+        >
+          <FontAwesomeIcon icon={faGithub} /> GitHub
+        </a>
+
+        {/* Demo Button */}
+        <a
+          href={project.demoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-4 py-2 text-white transition-colors bg-orange-500 rounded-lg hover:bg-orange-400"
+        >
+          <FontAwesomeIcon icon={faEye} /> View Demo
+        </a>
+      </div>
+    </div>
   );
 };
-
-
-export default Card;
