@@ -3,6 +3,7 @@
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faEye } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 const { default: Image } = require("next/image");
 
 export const Card = ({ project }) => {
@@ -39,24 +40,22 @@ export const Card = ({ project }) => {
       {/* Buttons */}
       <div className="flex items-center gap-4">
         {/* GitHub Button */}
-        <a
-          href={project.githubUrl}
+        <Link
+          href={project.linkGithub}
           target="_blank"
-          rel="noopener noreferrer"
           className="flex items-center gap-2 px-4 py-2 text-white transition-colors bg-gray-800 rounded-lg hover:bg-gray-600"
         >
           <FontAwesomeIcon icon={faGithub} /> GitHub
-        </a>
+        </Link>
 
         {/* Demo Button */}
-        <a
-          href={project.demoUrl}
+        <Link
+          href={project.linkDemo}
           target="_blank"
-          rel="noopener noreferrer"
           className="flex items-center gap-2 px-4 py-2 text-white transition-colors bg-orange-500 rounded-lg hover:bg-orange-400"
         >
           <FontAwesomeIcon icon={faEye} /> View Demo
-        </a>
+        </Link>
       </div>
     </div>
   );

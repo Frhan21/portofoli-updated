@@ -1,7 +1,10 @@
 "use client";
+
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const CreateForm = () => {
+  const router = useRouter();
   const [data, setData] = useState({
     title: "",
     image: null,
@@ -11,9 +14,10 @@ const CreateForm = () => {
   });
   const [techInput, setTechInput] = useState("");
 
-  const handleAddTech = (newTech) => {
-    if (!data.tech.includes(newTech) && newTech.trim() !== "") {
-      setData((prev) => ({ ...prev, tech: [...prev.tech, newTech.trim()] }));
+  const handleAddTech = () => {
+    if (!data.tech.includes(techInput) && techInput.trim() !== "") {
+      setData((prev) => ({ ...prev, tech: [...prev.tech, techInput.trim()] }));
+      setTechInput(""); // Reset input setelah menambahkan
     }
   };
 
@@ -44,6 +48,7 @@ const CreateForm = () => {
     if (res.ok) {
       const result = await res.json();
       alert("Project successfully created!");
+      router.push("/dashboard");
     } else {
       const error = await res.json();
       alert(error.message);
